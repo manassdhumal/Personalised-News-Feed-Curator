@@ -1,0 +1,161 @@
+@import "tailwindcss";
+
+/* ── Dark Theme (default) ────────────────────────────── */
+
+:root,
+.dark {
+  --background: #0C0C14;
+  --foreground: #EAEAF0;
+  --card: rgba(20, 20, 35, 0.7);
+  --card-foreground: #EAEAF0;
+  --popover: #141423;
+  --popover-foreground: #EAEAF0;
+  --primary: #6C8EEF;
+  --primary-foreground: #FFFFFF;
+  --secondary: rgba(40, 40, 65, 0.6);
+  --secondary-foreground: #C0C0D0;
+  --muted: #1E1E30;
+  --muted-foreground: #8888A0;
+  --accent: #E76F8B;
+  --accent-foreground: #FFFFFF;
+  --destructive: #EF4444;
+  --destructive-foreground: #FFFFFF;
+  --border: rgba(255, 255, 255, 0.08);
+  --input: rgba(255, 255, 255, 0.08);
+  --ring: #6C8EEF;
+  --radius: 0.75rem;
+}
+
+/* ── Light Theme ──────────────────────────────────────── */
+
+.light {
+  --background: #F8F9FC;
+  --foreground: #1A1A2E;
+  --card: rgba(255, 255, 255, 0.8);
+  --card-foreground: #1A1A2E;
+  --popover: #FFFFFF;
+  --popover-foreground: #1A1A2E;
+  --primary: #4F6CD9;
+  --primary-foreground: #FFFFFF;
+  --secondary: rgba(230, 232, 240, 0.8);
+  --secondary-foreground: #3A3A50;
+  --muted: #E8EAF0;
+  --muted-foreground: #6A6A80;
+  --accent: #D4547A;
+  --accent-foreground: #FFFFFF;
+  --destructive: #DC2626;
+  --destructive-foreground: #FFFFFF;
+  --border: rgba(0, 0, 0, 0.08);
+  --input: rgba(0, 0, 0, 0.06);
+  --ring: #4F6CD9;
+  --radius: 0.75rem;
+}
+
+/* ── Base ─────────────────────────────────────────────── */
+
+*,
+*::before,
+*::after {
+  border-color: var(--border);
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-sans), system-ui, -apple-system, sans-serif;
+  background: var(--background);
+  color: var(--foreground);
+}
+
+/* ── Glassmorphism ────────────────────────────────────── */
+
+.glass-card {
+  background: var(--card);
+  backdrop-filter: blur(16px) saturate(180%);
+  border: 1px solid var(--border);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.glass-card:hover {
+  border-color: rgba(108, 142, 239, 0.15);
+  box-shadow: 0 4px 24px rgba(108, 142, 239, 0.06);
+}
+
+.light .glass-card {
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.light .glass-card:hover {
+  box-shadow: 0 4px 16px rgba(79, 108, 217, 0.08);
+}
+
+/* ── Gradient text ────────────────────────────────────── */
+
+.gradient-text {
+  background: linear-gradient(135deg, #6C8EEF 0%, #E76F8B 50%, #F7B32B 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.light .gradient-text {
+  background: linear-gradient(135deg, #4F6CD9 0%, #D4547A 50%, #D4961F 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ── AI glow ──────────────────────────────────────────── */
+
+.ai-glow {
+  box-shadow: 0 0 20px rgba(108, 142, 239, 0.25),
+              0 0 40px rgba(108, 142, 239, 0.1);
+}
+
+.light .ai-glow {
+  box-shadow: 0 0 15px rgba(79, 108, 217, 0.15),
+              0 0 30px rgba(79, 108, 217, 0.05);
+}
+
+/* ── Scrollbar ────────────────────────────────────────── */
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(108, 142, 239, 0.2);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(108, 142, 239, 0.4);
+}
+
+/* ── Utilities ────────────────────────────────────────── */
+
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* ── Background decorations ──────────────────────────── */
+
+.dark body::before {
+  content: "";
+  position: fixed;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(ellipse at 20% 50%, rgba(108, 142, 239, 0.04) 0%, transparent 50%),
+              radial-gradient(ellipse at 80% 50%, rgba(231, 111, 139, 0.04) 0%, transparent 50%);
+  pointer-events: none;
+  z-index: -1;
+}

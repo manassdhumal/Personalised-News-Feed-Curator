@@ -1,0 +1,10 @@
+fastapi
+uvicorn
+httpx
+numpy
+python-dotenv
+aiosqlite
+passlib[bcrypt]
+python-jose[cryptography]
+websockets
+scikit-learn
